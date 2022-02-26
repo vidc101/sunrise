@@ -25,6 +25,23 @@ body {
   min-height: 90vh;
 }
 
+#alertBox {
+  position: fixed;
+  background-color: tomato;
+  color: white;
+  opacity: 0%;
+  padding: 1rem;
+  border-radius: 2%;
+  border: 0.1rem solid white;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 1rem;
+  max-width: 13vw;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 @keyframes weakShake {
   0% { transform: skewX(-7deg); }
   5% { transform: skewX(7deg); }
@@ -60,6 +77,27 @@ body {
   text-shadow: 0 0 0.5rem #cdcdcd;
   font-weight: bold;
   position: fixed;
+  animation: flowing 2.25s infinite;
+}
+
+@keyframes flowing {
+  0% { transform: translateY(0%) }
+  6% { transform: translateY(3.75%) }
+  12% { transform: translateY(7.5%) }
+  18% { transform: translateY(11%) }
+  25% { transform: translateY(15%) }
+  31% { transform: translateY(11%) }
+  37% { transform: translateY(7.5%) }
+  43% { transform: translateY(3.75%) }
+  50% { transform: translateY(0%) }
+  56% { transform: translateY(-3.75%) }
+  62% { transform: translateY(-7.5%) }
+  68% { transform: translateY(-11%) }
+  75% { transform: translateY(-15%) }
+  81% { transform: translateY(-11%) }
+  87% { transform: translateY(-7.5%) }
+  93% { transform: translateY(-3.75%) }
+  100% { transform: translateY(0%) }
 }
 
 .menu {
