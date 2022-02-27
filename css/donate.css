@@ -1,0 +1,13 @@
+#content {
+    text-align: center;
+}
+
+#donateForm {
+    margin-top: 25%;
+}
+
+#currentContractBalance {
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
