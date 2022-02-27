@@ -177,3 +177,24 @@ body {
   20% { transform: skewX(0deg); }
   100% { transform: skewX(0deg); }  
 }
+
+.default-button, .form-button {
+  background-color: rgb(69, 123, 139);
+  padding: 1rem;
+  border-radius: 4%;
+  border: none;
+  color: white;
+  transition: all 0.15s;
+  -webkit-transition: all 0.15s;
+}
+
+.form-button {
+  padding: 0.6rem;
+  border-radius: 5%;
+}
+
+.default-button:hover, .form-button:hover {
+  background-color: rgb(39, 81, 88);
+  cursor: pointer;
+  text-decoration: underline;
+}
