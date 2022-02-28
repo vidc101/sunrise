@@ -1,4 +1,4 @@
-const MAIN_CONTRACT_ADDRESS = "0x2E63eababf5C6277a4C984E2BE00a36CAA65409c";
+const MAIN_CONTRACT_ADDRESS = "0x746D47E9DC2Bfd77AE5EA12d155c966bFD6837bf";
 
 
 
@@ -273,6 +273,24 @@ const MAIN_CONTRACT_ABI = [
 	{
 		"inputs": [
 			{
+				"internalType": "string",
+				"name": "newUrl",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "resetMetadata",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "from",
 				"type": "address"
@@ -431,6 +449,45 @@ const MAIN_CONTRACT_ABI = [
 		"name": "transferOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "userStatsMap",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "usedFaucet",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "donated",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "nftsMinted",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "mintCooldown",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "faucetCooldown",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{

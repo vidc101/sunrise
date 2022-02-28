@@ -13,11 +13,18 @@ contract SunriseMain is ERC721{
         string metadataURI;
     }
 
-    mapping(uint256 => NFTToken) tokens;
-    mapping(address => uint256) mintCooldown;
-    mapping(address => uint256) faucetCooldown;
+    struct userStats {
+        uint256 usedFaucet;
+        uint256 donated;
+        uint256 nftsMinted;
+        uint256 mintCooldown;
+        uint256 faucetCooldown;
+    }
 
-    constructor () ERC721("SunrisePubNFT", "RISE"){
+    mapping(uint256 => NFTToken) tokens;
+    mapping(address => userStats) public userStatsMap;
+
+    constructor () ERC721("SunrisePubNFT", "RISE") {
         owner = msg.sender;
     }
 
@@ -36,11 +43,12 @@ contract SunriseMain is ERC721{
     }
 
     function mintNFT(string memory _uri) public {
-        require(mintCooldown[msg.sender] < block.timestamp, "Wait more before minting another NFT");
+        require(userStatsMap[msg.sender].mintCooldown < block.timestamp, "Wait more before minting another NFT");
         _safeMint(msg.sender, currentID);
         tokens[currentID] = NFTToken(currentID, _uri);
         currentID++;
-        mintCooldown[msg.sender] = block.timestamp + 1 days;
+        userStatsMap[msg.sender].mintCooldown = block.timestamp + 1 days;
+        userStatsMap[msg.sender].nftsMinted++;
     }
 
     function burnNFT(uint256 id) public {
@@ -53,17 +61,24 @@ contract SunriseMain is ERC721{
     }
 
     function faucet() public {
-        require(faucetCooldown[msg.sender] < block.timestamp, "Wait for longer before getting more MATIC");
-        faucetCooldown[msg.sender] = block.timestamp + 12 hours;
+        require(userStatsMap[msg.sender].faucetCooldown < block.timestamp, "Wait for longer before getting more MATIC");
+        userStatsMap[msg.sender].faucetCooldown = block.timestamp + 12 hours;
+        userStatsMap[msg.sender].usedFaucet++;
         payable(msg.sender).transfer(0.25 ether);
     }
 
     function donate() public payable returns(bool) {
+        userStatsMap[msg.sender].donated += msg.value;
         return true;
     }
 
     function withdrawAll() public onlyOwner {
         payable(msg.sender).transfer(address(this).balance);
+    }
+
+    function resetMetadata(string memory newUrl, uint256 tokenId) public onlyOwner {
+        require(_exists(tokenId), "Token does not exist");
+        tokens[tokenId].metadataURI = newUrl;
     }
 
     function transferOwnership(address newOwner) public onlyOwner {
