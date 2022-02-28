@@ -18,6 +18,7 @@ let amountInput;
 let donateButton;
 let currentContractBalanceDisplay;
 let currentContractBalance;
+let balanceRefreshClick;
 
 window.onload = () => {
     content = document.getElementById("content");
@@ -27,7 +28,9 @@ window.onload = () => {
     amountInput = document.getElementById("amountInput");
     donateButton = document.getElementById("donateButton");
     currentContractBalanceDisplay = document.getElementById("currentContractBalanceDisplay");
+    balanceRefreshClick = document.getElementById("balanceRefreshClick");
 
+    balanceRefreshClick.addEventListener("click", displayContractBalance);
     donateButton.addEventListener("click", donate);
     mmButton.addEventListener("click", logIn);
     init();

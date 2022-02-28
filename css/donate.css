@@ -11,3 +11,14 @@
     font-size: 2rem;
     font-weight: bold;
 }
+
+#balanceRefreshClick:hover {
+    cursor: pointer;
+    /*animation: rotate 2s infinite;*/
+}
+
+/*
+@keyframes rotate {
+    from { transform: rotate(-360deg); }
+    to { transform: rotate(360deg); }
+}*/
