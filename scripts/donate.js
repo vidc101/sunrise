@@ -163,6 +163,8 @@ donate = async () => {
 buttonUsability = () => {
     if (ethereum.selectedAddress == undefined) {
         donateButton.disabled = true;
+    } else {
+        donateButton.disabled = false;
     }
 }
 
